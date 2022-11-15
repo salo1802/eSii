@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "552410098688",
+    "project_id": "esii-c3d37",
+    "storage_bucket": "esii-c3d37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552410098688:android:1770219abc072278f2fce5",
+        "android_client_info": {
+          "package_name": "com.example.esii"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552410098688-vc50tt2tdb84l90snvvmc0tj29lfufso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArWixUFHI82i0ju0ad6KzUcD0AnN4crjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552410098688-vc50tt2tdb84l90snvvmc0tj29lfufso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
