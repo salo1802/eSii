@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ESii">
         <activity
+            android:name=".TestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
+        <activity
             android:name=".HomeActivity"
             android:exported="true" />
         <activity
