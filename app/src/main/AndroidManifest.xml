@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ESii">
         <activity
+            android:name=".CalendarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CoursesActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
 
