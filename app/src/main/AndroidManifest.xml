@@ -3,7 +3,6 @@
     package="com.example.esii">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +16,12 @@
             android:exported="true" />
         <activity
             android:name=".AddPictureActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatActivity"
             android:exported="true" />
         <activity
             android:name=".HomeActivity"
