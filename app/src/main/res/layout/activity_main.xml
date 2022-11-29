@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.facebook.login.widget.ProfilePictureView
-            android:id="@+id/profile_iv"
+            android:id="@+id/imageView16"
             android:layout_width="90dp"
             android:layout_height="90dp" />
 

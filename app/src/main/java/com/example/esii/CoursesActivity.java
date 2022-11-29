@@ -20,6 +20,7 @@ public class CoursesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses);
+        getSupportActionBar().hide();
 
         videoBtn = findViewById(R.id.videoBtn);
 
@@ -39,7 +40,7 @@ public class CoursesActivity extends AppCompatActivity {
                 switch (item.getItemId()){
 
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), CoursesActivity.class));
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

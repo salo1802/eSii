@@ -2,6 +2,7 @@ package com.example.esii;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
@@ -84,7 +85,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     String profileId = jsonObject.getString("id");
                                     String username = jsonObject.getString("name");
 
-
+                                    SharedPreferences p = getSharedPreferences("preferencias",MODE_PRIVATE);
+                                    p.edit().putString("Id",profileId).apply();
+                                    p.edit().putString("username",username).apply();
 
 
                                 } catch (JSONException e) {

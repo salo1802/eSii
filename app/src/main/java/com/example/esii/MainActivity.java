@@ -6,16 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.login.widget.ProfilePictureView;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loginButton = findViewById(R.id.login_button);
-        profile_iv = findViewById(R.id.profile_iv);
+        profile_iv = findViewById(R.id.imageView16);
         name_tv = findViewById(R.id.name);
 
         callbackManager = CallbackManager.Factory.create();

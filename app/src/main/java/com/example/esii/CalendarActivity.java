@@ -17,6 +17,7 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        getSupportActionBar().hide();
 
         bottomNavigationView = findViewById(R.id.bottom_navbar);
         //bottomNavigationView.setSelectedItemId(R.id.home);

@@ -1,10 +1,13 @@
 package com.example.esii;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -13,6 +16,7 @@ import com.facebook.AccessTokenSource;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.widget.ProfilePictureView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +34,7 @@ public class ChatActivity extends AppCompatActivity {
     private Collection <String> permisos;
     private String permisosStr = "user_photos, email, publish_video, openid, catalog_management, pages_show_list, read_page_mailboxes, business_management, pages_messaging, instagram_basic, instagram_manage_insights, instagram_content_publish, instagram_manage_messages, pages_read_engagement, pages_manage_metadata, public_profile";
 
-
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +94,42 @@ public class ChatActivity extends AppCompatActivity {
         request.setParameters(messengerMetadata);
         request.executeAsync();
 
+        bottomNavigationView = findViewById(R.id.bottom_navbar);
+        bottomNavigationView.setSelectedItemId(R.id.chat);
 
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.chat:
+
+                        return true;
+
+                    case R.id.cont:
+                        /*startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                        overridePendingTransition(0,0);*/
+                        return true;
+
+                    case R.id.courses:
+                        startActivity(new Intent(getApplicationContext(), CoursesActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
     }
 
