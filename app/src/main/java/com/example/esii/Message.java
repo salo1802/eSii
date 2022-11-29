@@ -15,7 +15,7 @@ public class Message {
         this.from = from;
         String jsonString = this.from;
         JSONObject jsonObject = new JSONObject(jsonString);
-        this.sender = jsonObject.getString("username");
+        this.sender = jsonObject.getString("name");
     }
 
     public String getFrom() {
