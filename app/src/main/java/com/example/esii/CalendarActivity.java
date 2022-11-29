@@ -17,6 +17,7 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        getSupportActionBar().hide();
 
         bottomNavigationView = findViewById(R.id.bottom_navbar);
         //bottomNavigationView.setSelectedItemId(R.id.home);
@@ -38,8 +39,8 @@ public class CalendarActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.cont:
-                        /*startActivity(new Intent(getApplicationContext(), ChatActivity.class));
-                        overridePendingTransition(0,0);*/
+                        startActivity(new Intent(getApplicationContext(), AddPictureActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.courses:

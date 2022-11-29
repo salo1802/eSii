@@ -20,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        getSupportActionBar().hide();
 
         homeCalendarBtn = findViewById(R.id.homeCalendarBtn);
 
@@ -48,8 +49,8 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.cont:
-                        /*startActivity(new Intent(getApplicationContext(), ChatActivity.class));
-                        overridePendingTransition(0,0);*/
+                        startActivity(new Intent(getApplicationContext(), AddPictureActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.courses:

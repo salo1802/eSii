@@ -22,6 +22,7 @@ public class VideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+        getSupportActionBar().hide();
 
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
@@ -44,7 +45,7 @@ public class VideoActivity extends AppCompatActivity {
                 switch (item.getItemId()){
 
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), CoursesActivity.class));
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -54,12 +55,13 @@ public class VideoActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.cont:
-                        /*startActivity(new Intent(getApplicationContext(), ChatActivity.class));
-                        overridePendingTransition(0,0);*/
+                        startActivity(new Intent(getApplicationContext(), AddPictureActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.courses:
-
+                        startActivity(new Intent(getApplicationContext(), CoursesActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.profile:

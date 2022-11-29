@@ -2,9 +2,11 @@ package com.example.esii;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,13 +43,15 @@ import java.util.Arrays;
 
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity {
 
     private EditText emailTextField;
     private EditText passwordTextField;
     private Button loginButton;
     private CallbackManager callbackManager;
     private LoginButton loginButtonFace;
+    private  String profileId;
+    private String username;
 
     private FirebaseAuth auth;
 
@@ -64,13 +68,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         auth= FirebaseAuth.getInstance();
 
-        loginButton.setOnClickListener(this);
+
 
         callbackManager = CallbackManager.Factory.create();
 
-        loginButtonFace.setPermissions(Arrays.asList("	user_photos, email, publish_video, openid, catalog_management, " +
-                "pages_show_list, read_page_mailboxes, business_management, pages_messaging, instagram_basic, instagram_manage_insights, instagram_content_publish," +
-                " instagram_manage_messages, pages_read_engagement, pages_manage_metadata, public_profile"));
+        //loginButtonFace.setPermissions(Arrays.asList("id,name,email,gender,birthday"));
 
         loginButtonFace.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -81,11 +83,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         public void onCompleted(@Nullable JSONObject jsonObject, @Nullable GraphResponse graphResponse) {
                             if(jsonObject != null){
                                 try {
-                                    String profileId = jsonObject.getString("id");
-                                    String username = jsonObject.getString("name");
+                                    profileId = jsonObject.getString("id");
+                                    username = jsonObject.getString("name");
 
-
-
+                                    SharedPreferences p = getSharedPreferences("preferencias",MODE_PRIVATE);
+                                    p.edit().putString("Id",profileId).apply();
+                                    p.edit().putString("username",username).apply();
+                                    Log.e("Prueba",profileId);
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -95,9 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                     });
                     Bundle bundle = new Bundle();
-                    bundle.putString("fields","	user_photos, email, publish_video, openid, catalog_management, " +
-                            "pages_show_list, read_page_mailboxes, business_management, pages_messaging, instagram_basic, instagram_manage_insights, instagram_content_publish," +
-                            " instagram_manage_messages, pages_read_engagement, pages_manage_metadata, public_profile");
+                    bundle.putString("fields","id,name,email,gender,birthday");
                     graphRequest.setParameters(bundle);
                     graphRequest.executeAsync();
                 }
@@ -115,36 +117,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.loginButton:
-                if(!emailTextField.getText().toString().isEmpty() && !passwordTextField.getText().toString().isEmpty()){
-                    auth.signInWithEmailAndPassword(emailTextField.getText().toString(), passwordTextField.getText().toString()).addOnCompleteListener(
-                            task -> {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(this, "Login exitoso", Toast.LENGTH_LONG).show();
-                                   /* Intent i=new Intent (this, TeamSelectActivity.class);
-                                    startActivity(i);
-                                    finish();*/
-                                }else{
-                                    Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                }
-                            }
-                    );
-                }else{
-                    Toast.makeText(this, "Por favor llenar todos los campos", Toast.LENGTH_LONG).show();
-                }
 
-                break;
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        Intent i = new Intent(this, ChatActivity.class);
+
+        Intent i = new Intent(this, HomeActivity.class);
         startActivity(i);
     }
 }
