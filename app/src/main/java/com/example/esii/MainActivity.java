@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         loginButton.setPermissions(Arrays.asList("	user_photos, email, publish_video, openid, catalog_management, " +
                 "pages_show_list, read_page_mailboxes, business_management, pages_messaging, instagram_basic, instagram_manage_insights, instagram_content_publish," +
-                " instagram_manage_messages, pages_read_engagement, pages_manage_metadata, public_profile"));
+                " instagram_manage_messages, pages_read_engagement, pages_manage_metadata, public_profile, read_mailbox"));
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -94,11 +94,5 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
-        Intent i = new Intent(this, ChatActivity.class);
-        startActivity(i);
-    }
+
 }
