@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ESii">
         <activity
+            android:name=".PostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddPictureActivity"
+            android:exported="true" />
+        <activity
             android:name=".TestActivity"
             android:exported="true" />
         <activity
