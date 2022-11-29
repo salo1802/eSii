@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -15,10 +16,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -32,7 +36,7 @@ public class AddPictureActivity extends AppCompatActivity implements View.OnClic
     private ActivityResultLauncher<Intent> takePictureResultLauncher;
     private  Bitmap bitmap;
 
-
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,43 @@ public class AddPictureActivity extends AppCompatActivity implements View.OnClic
                         }
                     }
                 });
+
+        bottomNavigationView = findViewById(R.id.bottom_navbar);
+        bottomNavigationView.setSelectedItemId(R.id.cont);
+
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.chat:
+                        startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.cont:
+
+                        return true;
+
+                    case R.id.courses:
+                        startActivity(new Intent(getApplicationContext(), CoursesActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
     }
 
