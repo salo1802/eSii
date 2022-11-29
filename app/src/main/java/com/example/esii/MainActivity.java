@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         callbackManager = CallbackManager.Factory.create();
 
-        loginButton.setPermissions(Arrays.asList("email, user_photos"));
+        loginButton.setPermissions(Arrays.asList("	user_photos, email, publish_video, openid, catalog_management, " +
+                "pages_show_list, read_page_mailboxes, business_management, pages_messaging, instagram_basic, instagram_manage_insights, instagram_content_publish," +
+                " instagram_manage_messages, pages_read_engagement, pages_manage_metadata, public_profile, read_mailbox"));
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                                     profile_iv.setPresetSize(ProfilePictureView.NORMAL);
                                     profile_iv.setProfileId(profileId);
                                     name_tv.setText(username);
+
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -68,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     Bundle bundle = new Bundle();
-                    bundle.putString("fields","id,name,email,gender,birthday");
+                    bundle.putString("fields","	user_photos, email, publish_video, openid, catalog_management, " +
+                            "pages_show_list, read_page_mailboxes, business_management, pages_messaging, instagram_basic, instagram_manage_insights, instagram_content_publish," +
+                            " instagram_manage_messages, pages_read_engagement, pages_manage_metadata, public_profile");
                     graphRequest.setParameters(bundle);
                     graphRequest.executeAsync();
                 }
@@ -88,9 +94,5 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+
 }
